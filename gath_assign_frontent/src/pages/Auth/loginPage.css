@@ -2,18 +2,26 @@
    Theme Variables
    ================================ */
 :root {
-  --color-primary: #00E8FF;          /* Electric cyan - main accent */
-  --color-secondary: #8A00FF;        /* Deep violet - gradient partner */
-  --color-accent: #39FF14;           /* Neon green - optional highlights */
-  --color-background: #0A0A0A;       /* Charcoal black sea background */
-  --color-card: #1A1A1A;             /* Dark slate card for login box */
-  --color-card-border: rgba(255, 255, 255, 0.08); /* Subtle border glow */
-  --color-input-bg: rgba(255, 255, 255, 0.02);    /* Transparent input background */
-  --color-input-border: rgba(255, 255, 255, 0.15);/* Slightly brighter input border */
-  --color-text: #FFFFFF;             /* Crisp white text */
-  --color-subtext: #9CA3AF;          /* Muted gray for secondary text */
+  --color-primary: #00e8ff; /* Electric cyan */
+  --color-secondary: #8a00ff; /* Deep violet */
+  --color-accent: #39ff14; /* Neon green */
+  --color-background: #0a0a0a; /* Background */
+  --color-card: #1a1a1a; /* Card background */
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  --color-input-bg: rgba(255, 255, 255, 0.02);
+  --color-input-border: rgba(255, 255, 255, 0.15);
+  --color-text: #ffffff;
+  --color-subtext: #9ca3af;
 }
 
+/* ================================
+   Global Reset Safeguard
+   ================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 /* ================================
    Page Layout
@@ -22,18 +30,20 @@
   position: relative;
   z-index: 10;
   min-height: 100vh;
+  min-height: 100dvh; /* Handles mobile browser address bar height changes */
   width: 100%;
+  max-width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3rem 1rem;
+  padding: 1.5rem 1rem;
   background: var(--color-background);
   color: var(--color-text);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* ================================
-   Login Card
+   Login / Register Card
    ================================ */
 .login-card {
   position: relative;
@@ -41,13 +51,14 @@
   width: 100%;
   max-width: 420px;
   border-radius: 1.25rem;
-  padding: 2rem;
+  padding: 1.5rem;
   background: var(--color-card);
   border: 1px solid var(--color-card-border);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
 }
 
+/* Tablet & Desktop spacing enhancement */
 @media (min-width: 640px) {
   .login-card {
     border-radius: 1.5rem;
@@ -58,17 +69,37 @@
 /* ================================
    Header
    ================================ */
+.login-header {
+  text-align: center;
+}
+
 .login-header h1 {
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 5vw, 2rem);
   font-weight: 800;
   letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
 .login-header p {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  font-size: clamp(0.85rem, 3vw, 0.95rem);
   font-weight: 500;
   color: var(--color-subtext);
+}
+
+/* ================================
+   Error Banner
+   ================================ */
+.error-banner {
+  background: rgba(255, 75, 75, 0.15);
+  border: 1px solid rgba(255, 75, 75, 0.4);
+  color: #ff6b6b;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  text-align: center;
+  word-break: break-word;
 }
 
 /* ================================
@@ -78,11 +109,12 @@
   display: flex;
   align-items: center;
   border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 0.85rem;
   background: var(--color-input-bg);
   border: 1px solid var(--color-input-border);
   transition: all 0.3s ease;
   margin-top: 1rem;
+  min-height: 48px; /* Mobile touch accessibility target */
 }
 
 .input-group:focus-within {
@@ -91,9 +123,17 @@
   box-shadow: 0 0 0 2px var(--color-secondary);
 }
 
+/* Icon scaling for small screens */
+.input-group svg {
+  flex-shrink: 0;
+  color: var(--color-subtext);
+  font-size: 1.1rem;
+}
+
 .input-group input {
   flex: 1;
-  margin-left: 0.75rem;
+  min-width: 0; /* Prevents text overflow breaking flex container */
+  margin-left: 0.6rem;
   background: transparent;
   border: none;
   outline: none;
@@ -102,7 +142,7 @@
 }
 
 .input-group input::placeholder {
-  color: #64748B; /* softer slate placeholder */
+  color: #64748b;
 }
 
 /* ================================
@@ -110,17 +150,24 @@
    ================================ */
 .login-button {
   width: 100%;
-  padding: 1rem;
-  margin-top: 1rem;
+  min-height: 48px;
+  padding: 0.85rem 1rem;
+  margin-top: 1.25rem;
   border-radius: 0.75rem;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  gap: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   color: var(--color-text);
+  border: none;
+  cursor: pointer;
   box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -143,31 +190,44 @@
    Footer
    ================================ */
 .login-footer {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--color-subtext);
 }
 
 .login-footer a {
-  margin-left: 0.5rem;
+  margin-left: 0.35rem;
   color: var(--color-accent);
   text-decoration: none;
+  font-weight: 600;
   transition: color 0.2s ease;
+  display: inline-block;
 }
 
 .login-footer a:hover {
   text-decoration: underline;
 }
 
-.error-banner {
-  background: rgba(255, 75, 75, 0.15);
-  border: 1px solid rgba(255, 75, 75, 0.4);
-  color: #ff6b6b;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-size: 0.88rem;
-  margin-bottom: 1rem;
-  text-align: center;
+/* ================================
+   Ultra Small Screens (≤ 380px)
+   ================================ */
+@media (max-width: 380px) {
+  .login-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .login-card {
+    padding: 1.25rem 1rem;
+    border-radius: 1rem;
+  }
+
+  .input-group {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .login-button {
+    font-size: 0.9rem;
+  }
 }

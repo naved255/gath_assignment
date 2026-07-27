@@ -14,7 +14,7 @@ const RegisterPage = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrorMessage(""); // Clear error when typing
+    setErrorMessage("");
   };
 
   const handleSubmit = async (e) => {
@@ -23,10 +23,13 @@ const RegisterPage = () => {
     setErrorMessage("");
 
     try {
-      const response = await axios.post("https://gath-assignment-backend.onrender.com/user/register", formData, {withCredentials:true});
+      const response = await axios.post(
+        "https://gath-assignment-backend.onrender.com/user/register",
+        formData,
+        { withCredentials: true }
+      );
 
       if (response.data.status) {
-        // Redirect to login on successful registration
         navigate("/user/login");
       }
     } catch (error) {
@@ -56,7 +59,7 @@ const RegisterPage = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <FiUser size={20} />
+            <FiUser size={18} />
             <input
               required
               type="text"
@@ -68,7 +71,7 @@ const RegisterPage = () => {
           </div>
 
           <div className="input-group">
-            <FiMail size={20} />
+            <FiMail size={18} />
             <input
               required
               type="email"
@@ -80,7 +83,7 @@ const RegisterPage = () => {
           </div>
 
           <div className="input-group">
-            <FiLock size={20} />
+            <FiLock size={18} />
             <input
               required
               type="password"
@@ -92,13 +95,13 @@ const RegisterPage = () => {
           </div>
 
           <motion.button
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isSubmitting}
             className="login-button"
           >
-            {isSubmitting ? "Creating Account..." : "Sign Up"} <FiArrowRight />
+            {isSubmitting ? "Creating Account..." : "Sign Up"} <FiArrowRight size={18} />
           </motion.button>
         </form>
 

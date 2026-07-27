@@ -26,17 +26,13 @@ const LoginPage = () => {
       const response = await axios.post(
         "https://gath-assignment-backend.onrender.com/user/login",
         formData,
-       
         {
-          withCredentials: true, // Crucial for receiving the refresh token cookie
+          withCredentials: true,
         }
       );
 
       if (response.data.status) {
-        // Save Access Token for API calls
         localStorage.setItem("accessToken", response.data.accessToken);
-
-        // Redirect to dashboard/home
         navigate("/");
       }
     } catch (error) {
@@ -66,7 +62,7 @@ const LoginPage = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <FiMail size={20} />
+            <FiMail size={18} />
             <input
               required
               type="email"
@@ -78,7 +74,7 @@ const LoginPage = () => {
           </div>
 
           <div className="input-group">
-            <FiLock size={20} />
+            <FiLock size={18} />
             <input
               required
               type="password"
@@ -90,13 +86,13 @@ const LoginPage = () => {
           </div>
 
           <motion.button
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isSubmitting}
             className="login-button"
           >
-            {isSubmitting ? "Logging in..." : "Login"} <FiArrowRight />
+            {isSubmitting ? "Logging in..." : "Login"} <FiArrowRight size={18} />
           </motion.button>
         </form>
 
