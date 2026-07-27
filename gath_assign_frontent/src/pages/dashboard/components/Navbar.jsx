@@ -24,7 +24,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/user/logout",
+        "https://gath-assignment-backend.onrender.com/user/logout",
         {},
         { withCredentials: true }
       );

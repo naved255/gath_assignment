@@ -24,7 +24,7 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/login",
+        "https://gath-assignment-backend.onrender.com/user/login",
         formData,
        
         {

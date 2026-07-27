@@ -23,7 +23,7 @@ const RegisterPage = () => {
     setErrorMessage("");
 
     try {
-      const response = await axios.post("http://localhost:3000/user/register", formData, {withCredentials:true});
+      const response = await axios.post("https://gath-assignment-backend.onrender.com/user/register", formData, {withCredentials:true});
 
       if (response.data.status) {
         // Redirect to login on successful registration
