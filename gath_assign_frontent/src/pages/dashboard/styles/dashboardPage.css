@@ -201,6 +201,133 @@
   background: linear-gradient(90deg, transparent, #ff5555, transparent);
 }
 
+/* Base Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(10, 15, 29, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.brand-icon {
+  color: #00f0ff;
+  font-size: 1.5rem;
+}
+
+.brand-accent {
+  color: #00f0ff;
+}
+
+/* Desktop Navigation Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #a0aec0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.08);
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.logout-btn:hover {
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.12);
+}
+
+/* Hide Hamburger Button on Desktop */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ========================================== */
+/* MOBILE RESPONSIVE MEDIA QUERY (≤ 768px)   */
+/* ========================================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.25rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none; /* Hide horizontal links by default */
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 15, 29, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 1rem;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+
+  /* Show links when mobile menu is toggled open */
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .nav-item {
+    padding: 0.85rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start;
+  }
+}
 
 @keyframes cameraImpactShake {
   10%, 90% { transform: translate3d(-3px, 2px, 0); }

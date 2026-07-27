@@ -1,15 +1,28 @@
-import React from "react";
-import { FiUser, FiMail, FiInfo, FiSettings, FiShield, FiLogOut } from "react-icons/fi";
+import React, { useState } from "react";
+import {
+  FiUser,
+  FiMail,
+  FiInfo,
+  FiSettings,
+  FiShield,
+  FiLogOut,
+  FiMenu,
+  FiX,
+} from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/dashboardPage.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
 
   const handleLogout = async () => {
     try {
-      // Call backend to invalidate refresh token & clear HTTP-only cookie
       await axios.post(
         "http://localhost:3000/user/logout",
         {},
@@ -18,10 +31,7 @@ const Navbar = () => {
     } catch (error) {
       console.error("Logout request failed:", error);
     } finally {
-      // Clear local storage token
       localStorage.removeItem("accessToken");
-
-      // Redirect to login page
       navigate("/user/login");
     }
   };
@@ -35,27 +45,53 @@ const Navbar = () => {
         </span>
       </div>
 
-      <ul className="navbar-links">
+      {/* Hamburger Toggle Button for Mobile */}
+      <button
+        className="menu-toggle"
+        onClick={toggleMenu}
+        aria-label="Toggle Navigation"
+      >
+        {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+      </button>
+
+      {/* Navigation Links */}
+      <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
         <li>
-          <a href="#profile" className="nav-item">
+          <a
+            href="#profile"
+            className="nav-item"
+            onClick={() => setMenuOpen(false)}
+          >
             <FiUser className="nav-icon" />
             <span>Profile</span>
           </a>
         </li>
         <li>
-          <a href="#contact" className="nav-item">
+          <a
+            href="#contact"
+            className="nav-item"
+            onClick={() => setMenuOpen(false)}
+          >
             <FiMail className="nav-icon" />
             <span>Contact</span>
           </a>
         </li>
         <li>
-          <a href="#info" className="nav-item">
+          <a
+            href="#info"
+            className="nav-item"
+            onClick={() => setMenuOpen(false)}
+          >
             <FiInfo className="nav-icon" />
             <span>Information</span>
           </a>
         </li>
         <li>
-          <a href="#settings" className="nav-item">
+          <a
+            href="#settings"
+            className="nav-item"
+            onClick={() => setMenuOpen(false)}
+          >
             <FiSettings className="nav-icon" />
             <span>Settings</span>
           </a>
