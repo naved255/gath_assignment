@@ -16,26 +16,26 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser()); 
 
-// Add this right after initializing express: const app = express();
+
 app.use(
   cors({
-    origin: "http://localhost:5173", // Replace with your React app's local URL (Vite: 5173, CRA: 3000)
-    credentials: true, // Allows sending and receiving HTTP-only cookies
+    origin: "http://localhost:5173", 
+    credentials: true, 
   })
 );
 
-// Database Connection 
+
 mongoose
   .connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/gath_test")
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Helper Functions to Generate Tokens
+
 const generateAccessToken = (user) => {
   return jwt.sign(
     { id: user._id, email: user.email },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "15m" } // Short lifetime
+    { expiresIn: "15m" } 
   );
 };
 
@@ -43,15 +43,11 @@ const generateRefreshToken = (user) => {
   return jwt.sign(
     { id: user._id },
     process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "7d" } // Long lifetime
+    { expiresIn: "7d" }
   );
 };
 
-// ==========================================
-// ROUTES
-// ==========================================
 
-// 1. REGISTER
 app.post("/user/register", async (req, res) => {
   try {
   
@@ -91,7 +87,7 @@ app.post("/user/login", async (req, res) => {
     // Store refresh token in secure HTTP-Only cookie
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false, // Set to true in production (HTTPS)
+      secure: false,
       sameSite: "strict",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
