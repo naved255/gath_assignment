@@ -1,0 +1,173 @@
+/* ================================
+   Theme Variables
+   ================================ */
+:root {
+  --color-primary: #00E8FF;          /* Electric cyan - main accent */
+  --color-secondary: #8A00FF;        /* Deep violet - gradient partner */
+  --color-accent: #39FF14;           /* Neon green - optional highlights */
+  --color-background: #0A0A0A;       /* Charcoal black sea background */
+  --color-card: #1A1A1A;             /* Dark slate card for login box */
+  --color-card-border: rgba(255, 255, 255, 0.08); /* Subtle border glow */
+  --color-input-bg: rgba(255, 255, 255, 0.02);    /* Transparent input background */
+  --color-input-border: rgba(255, 255, 255, 0.15);/* Slightly brighter input border */
+  --color-text: #FFFFFF;             /* Crisp white text */
+  --color-subtext: #9CA3AF;          /* Muted gray for secondary text */
+}
+
+
+/* ================================
+   Page Layout
+   ================================ */
+.login-container {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  background: var(--color-background);
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+/* ================================
+   Login Card
+   ================================ */
+.login-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .login-card {
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+  }
+}
+
+/* ================================
+   Header
+   ================================ */
+.login-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.login-header p {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-subtext);
+}
+
+/* ================================
+   Form Inputs
+   ================================ */
+.input-group {
+  display: flex;
+  align-items: center;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.input-group:focus-within {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+.input-group input {
+  flex: 1;
+  margin-left: 0.75rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.input-group input::placeholder {
+  color: #64748B; /* softer slate placeholder */
+}
+
+/* ================================
+   Submit Button
+   ================================ */
+.login-button {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: var(--color-text);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+}
+
+.login-button:active {
+  transform: scale(0.98);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================================
+   Footer
+   ================================ */
+.login-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-subtext);
+}
+
+.login-footer a {
+  margin-left: 0.5rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.error-banner {
+  background: rgba(255, 75, 75, 0.15);
+  border: 1px solid rgba(255, 75, 75, 0.4);
+  color: #ff6b6b;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}

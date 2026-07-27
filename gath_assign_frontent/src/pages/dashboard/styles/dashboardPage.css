@@ -1,0 +1,229 @@
+/* ================================
+   Theme Variables & Base Layout
+   ================================ */
+:root {
+  --color-primary: #00E8FF;
+  --color-secondary: #8A00FF;
+  --color-accent: #39FF14;
+  --color-background: #030a16;
+  --color-card: #0c182b;
+  --color-card-border: rgba(0, 232, 255, 0.15);
+  --color-text: #FFFFFF;
+  --color-subtext: #94A3B8;
+}
+
+.dashboard {
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* ================================
+   Navbar Styles
+   ================================ */
+.navbar {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2.5rem;
+  background: rgba(3, 10, 22, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 232, 255, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              0 1px 0 rgba(255, 255, 255, 0.05) inset;
+}
+
+/* Brand / Logo Section */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--color-text);
+  user-select: none;
+}
+
+.brand-icon {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 8px rgba(0, 232, 255, 0.8));
+}
+
+.brand-accent {
+  color: var(--color-primary);
+  margin-left: 2px;
+}
+
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 1rem;
+  color: var(--color-subtext);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover States & Neon Glow Effect */
+.nav-item:hover {
+  color: #ffffff;
+  background: rgba(0, 232, 255, 0.08);
+  box-shadow: 0 0 12px rgba(0, 232, 255, 0.15),
+              inset 0 0 8px rgba(0, 232, 255, 0.1);
+}
+
+.nav-item:hover .nav-icon {
+  color: var(--color-primary);
+  transform: translateY(-1px);
+  filter: drop-shadow(0 0 6px var(--color-primary));
+}
+
+/* Active Indicator Underline */
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 80%;
+}
+
+
+:root {
+  --color-primary: #00E8FF;
+  --color-secondary: #8A00FF;
+  --color-accent: #39FF14;
+  --color-background: #030a16;
+  --color-card: #0c182b;
+  --color-card-border: rgba(0, 232, 255, 0.15);
+  --color-text: #FFFFFF;
+  --color-subtext: #94A3B8;
+}
+
+.dashboard {
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 2.5rem;
+  background: rgba(3, 10, 22, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 232, 255, 0.18);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-item {
+  color: var(--color-subtext);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  color: var(--color-primary);
+  text-shadow: 0 0 8px var(--color-primary);
+}
+
+/* Logout Button Styling */
+.logout-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.92rem;
+  outline: none;
+}
+
+/* Red Glow Effect on Hover for Logout */
+.logout-btn:hover {
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.12);
+  box-shadow: 0 0 12px rgba(255, 85, 85, 0.25),
+              inset 0 0 8px rgba(255, 85, 85, 0.15);
+}
+
+.logout-btn:hover .nav-icon {
+  color: #ff5555;
+  filter: drop-shadow(0 0 6px #ff5555);
+}
+
+.logout-btn::after {
+  background: linear-gradient(90deg, transparent, #ff5555, transparent);
+}
+
+
+@keyframes cameraImpactShake {
+  10%, 90% { transform: translate3d(-3px, 2px, 0); }
+  20%, 80% { transform: translate3d(5px, -4px, 0); }
+  30%, 55%, 75% { transform: translate3d(-7px, 5px, 0); }
+  40%, 60% { transform: translate3d(7px, -5px, 0); }
+}
+
+/* Responsive adjustments for mobile viewports */
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0.8rem 1.2rem;
+  }
+  
+  .navbar-links {
+    gap: 0.5rem;
+  }
+  
+  .nav-item span {
+    display: none; /* Shows only icons on mobile */
+  }
+
+  .nav-item {
+    padding: 0.5rem;
+  }
+}

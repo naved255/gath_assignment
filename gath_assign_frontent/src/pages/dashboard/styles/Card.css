@@ -1,0 +1,61 @@
+:root {
+  --color-primary: #00E8FF;
+  --color-secondary: #8A00FF;
+  --color-accent: #39FF14;
+  --color-background: #030a16;
+  --color-card: #0c182b;
+  --color-card-border: rgba(0, 232, 255, 0.15);
+  --color-text: #FFFFFF;
+  --color-subtext: #94A3B8;
+}
+
+/* Card Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* Card Base */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: var(--color-text);
+  box-shadow: 0 8px 20px rgba(0, 232, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 232, 255, 0.15);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.card-icon {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 6px var(--color-primary));
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Card Body */
+.card-body {
+  font-size: 0.95rem;
+  color: var(--color-subtext);
+  line-height: 1.5;
+}
